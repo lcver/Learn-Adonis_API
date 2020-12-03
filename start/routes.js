@@ -22,5 +22,7 @@ Route.get('/', () => {
 
 Route.group(() => {
   Route.get('students', 'StudentController.index')
+  Route.get('students/:id', 'StudentController.show')
+
   Route.post('students/store', 'StudentController.store')
 }).prefix('api/v1')

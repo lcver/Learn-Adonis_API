@@ -22,6 +22,12 @@ class StudentController {
 
         return response.json(students)
     }
+
+    async show({params, response}) {
+        const student = await Student.find(params.id)
+
+        return response.json(student)
+    }
 }
 
 module.exports = StudentController
