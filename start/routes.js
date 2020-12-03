@@ -24,21 +24,25 @@ Route.group(() => {
   /**
    * Show data students
    */
-  Route.get('students', 'StudentController.index')
-  Route.get('students/:id', 'StudentController.show')
+  Route.get('students', 'StudentController.index').middleware(['auth:jwt'])
+  Route.get('students/:id', 'StudentController.show').middleware(['auth:jwt'])
 
   /**
    * Create data students
    */
-  Route.post('students/store', 'StudentController.store')
+  Route.post('students/store', 'StudentController.store').middleware(['auth:jwt'])
 
   /**
    * Update data students
    */
-  Route.put('students/:id', 'StudentController.update')
+  Route.put('students/:id', 'StudentController.update').middleware(['auth:jwt'])
   
   /**
    * Delete data student
    */
-  Route.delete('students/:id', 'StudentController.delete')
+  Route.delete('students/:id', 'StudentController.delete').middleware(['auth:jwt'])
 }).prefix('api/v1')
+
+Route.group(() => {
+  Route.post('login', 'AuthController.postLoginJwt').as('loginJwt')
+}).prefix('api/auth')
