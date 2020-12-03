@@ -21,8 +21,24 @@ Route.get('/', () => {
 })
 
 Route.group(() => {
+  /**
+   * Show data students
+   */
   Route.get('students', 'StudentController.index')
   Route.get('students/:id', 'StudentController.show')
 
+  /**
+   * Create data students
+   */
   Route.post('students/store', 'StudentController.store')
+
+  /**
+   * Update data students
+   */
+  Route.put('students/:id', 'StudentController.update')
+  
+  /**
+   * Delete data student
+   */
+  Route.delete('students/:id', 'StudentController.delete')
 }).prefix('api/v1')
