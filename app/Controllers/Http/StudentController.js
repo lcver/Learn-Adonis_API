@@ -15,6 +15,13 @@ class StudentController {
 
         return response.status(201).json(student)
     }
+
+
+    async index({response}) {
+        let students = await Student.all()
+
+        return response.json(students)
+    }
 }
 
 module.exports = StudentController
